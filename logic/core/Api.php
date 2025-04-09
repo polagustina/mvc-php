@@ -16,7 +16,7 @@ class Api{
 
     public function __destruct(){
 
-        $this->connection = curl_close();
+        curl_close($this->connection);
 
     }
 

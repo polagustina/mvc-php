@@ -1,6 +1,6 @@
 <?php
 
-include "../private/core/View.php";
+include "../logic/core/View.php";
 
 // Store the requested endpoint
 $uri = $_SERVER["REQUEST_URI"];
@@ -11,9 +11,9 @@ $pages = ["", "test"];
 // Check if you have the endpoint
 if(in_array($urlParams[1], $pages)){
 
-    include "../private/core/Model.php";
-    include "../private/core/Controller.php";
-    include "../private/core/Api.php";
+    include "../logic/core/Model.php";
+    include "../logic/core/Controller.php";
+    include "../logic/core/Api.php";
 
     $unformattedPageName = explode("-", $urlParams[1]);
     $pageName = "";
@@ -28,9 +28,9 @@ if(in_array($urlParams[1], $pages)){
     $view = $pageName . "View";
     $controller = $pageName . "Controller";
 
-    include "../private/models/" . $model . ".php";
-    include "../private/views/" . $view . ".php";
-    include "../private/controllers/" . $controller . ".php";
+    include "../logic/models/" . $model . ".php";
+    include "../logic/views/" . $view . ".php";
+    include "../logic/controllers/" . $controller . ".php";
 
     // Load the page dynamically
     $page = new $controller($model, $view);
