@@ -1,11 +1,11 @@
 <?php
 
-// This class implements the Api class in order to handle the data of your app
-class Model{
+// This class can implement the Api class to get the data of each page
+class Model {
 
     protected $api;
 
-    public function __construct(){
+    public function connectToApi() {
 
         $this->api = new Api;
 
