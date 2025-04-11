@@ -1,3 +1,5 @@
 {
-    "h1": "Esto es un ejemplo de la arquitectura MVC en PHP"
+    "header-1": "Esto es un ejemplo de la arquitectura MVC en PHP",
+    "footer-1": "Esta pagina web está en desarrollo.",
+    "footer-2": "Ver código fuente"
 }

@@ -1,4 +1,6 @@
 {
     "title": "Example",
-    "i18n-1": "This is the example page"
+    "example-1": "This is the example page",
+    "example-2": "English",
+    "example-3": "Spanish"
 }

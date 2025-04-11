@@ -2,39 +2,43 @@
 
 include "../logic/core/View.php";
 
-// Store the requested endpoint
+// Obtain requested page
 $uri = $_SERVER["REQUEST_URI"];
 $urlParams = explode("/", $uri);
 
-$pages = ["", "example"];
+// The expected uri is in dash-case
+$requestedPage = explode("-", $urlParams[1]);
 
-// Check if you have the endpoint
-if(in_array($urlParams[1], $pages)){
+// And gets converted into CamelCase 
+$page = "";
+foreach ($requestedPage as $string)
+    $page .= ucfirst($string);
+
+
+// The "/" is treated as the main entrypoint, in this case "Example"
+if ($page === "")
+    $page = "Example";
+
+// Here you place all the pages you want to serve
+$pages = ["Example"];
+
+// Load the page dynamically
+if (in_array($page, $pages)) {
 
     include "../logic/core/Model.php";
     include "../logic/core/Controller.php";
     include "../logic/core/Api.php";
 
-    $unformattedPageName = explode("-", $urlParams[1]);
-    $pageName = "";
-    foreach ($unformattedPageName as $string) {
-        $pageName .= ucfirst($string);
-    }
-
-    if($pageName === "")
-        $pageName = "Example";
-
-    $modelName      = $pageName . "Model";
-    $viewName       = $pageName . "View";
-    $controllerName = $pageName . "Controller";
+    $modelName      = $page . "Model";
+    $viewName       = $page . "View";
+    $controllerName = $page . "Controller";
 
     include "../logic/models/"      . $modelName . ".php";
     include "../logic/views/"       . $viewName . ".php";
     include "../logic/controllers/" . $controllerName . ".php";
 
-    // Load the page dynamically
     $model      = new $modelName();
-    $view       = new $viewName($language);
+    $view       = new $viewName();
     $controller = new $controllerName($model, $view);
 
     exit;
@@ -42,7 +46,7 @@ if(in_array($urlParams[1], $pages)){
 }
 
 // Serve custom error message
-$view = new View($language);
+$view = new View();
 
 $view->render("error", function() use($uri) {
 

@@ -10,3 +10,8 @@ header {
 body {
     width: 100vw;
 }
+
+footer {
+    width: 100vw;
+    justify-content: center;
+}

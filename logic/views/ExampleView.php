@@ -7,12 +7,15 @@ class ExampleView extends View {
     // If your page needs to have multiple views or widgets you have to create a method that implements the parent::render
     public function renderExample(){
 
-        parent::render("Example", function() {
+        parent::render("example", function() {
 
 ?>
 
-            <h2 id="i18n-1"></h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus necessitatibus eaque illo omnis iusto nobis laudantium, nulla saepe! Adipisci vel quos labore consequatur autem nobis corrupti error maxime, voluptates alias?</p>
+            <p id="example-1"></p>
+            <select name="language-select" id="language-select">
+                <option value="en" id="example-2" selected></option>
+                <option value="es" id="example-3"></option>
+            </select>
 
 <?php
 
