@@ -6,7 +6,7 @@ include "../logic/core/View.php";
 $uri = $_SERVER["REQUEST_URI"];
 $urlParams = explode("/", $uri);
 
-$pages = ["", "test"];
+$pages = ["", "example"];
 
 // Check if you have the endpoint
 if(in_array($urlParams[1], $pages)){
@@ -22,27 +22,29 @@ if(in_array($urlParams[1], $pages)){
     }
 
     if($pageName === "")
-        $pageName = "Test";
+        $pageName = "Example";
 
-    $model = $pageName . "Model";
-    $view = $pageName . "View";
-    $controller = $pageName . "Controller";
+    $modelName      = $pageName . "Model";
+    $viewName       = $pageName . "View";
+    $controllerName = $pageName . "Controller";
 
-    include "../logic/models/" . $model . ".php";
-    include "../logic/views/" . $view . ".php";
-    include "../logic/controllers/" . $controller . ".php";
+    include "../logic/models/"      . $modelName . ".php";
+    include "../logic/views/"       . $viewName . ".php";
+    include "../logic/controllers/" . $controllerName . ".php";
 
     // Load the page dynamically
-    $page = new $controller($model, $view);
+    $model      = new $modelName();
+    $view       = new $viewName($language);
+    $controller = new $controllerName($model, $view);
 
     exit;
 
 }
 
 // Serve custom error message
-$view = new View;
+$view = new View($language);
 
-$view->render("Error", function() use($uri){
+$view->render("error", function() use($uri) {
 
 ?>
 

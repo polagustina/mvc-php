@@ -11,8 +11,7 @@ class ExampleView extends View {
 
 ?>
 
-            <h2>This is the example page</h2>
-
+            <h2 id="i18n-1"></h2>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus necessitatibus eaque illo omnis iusto nobis laudantium, nulla saepe! Adipisci vel quos labore consequatur autem nobis corrupti error maxime, voluptates alias?</p>
 
 <?php
