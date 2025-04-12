@@ -3,8 +3,11 @@
 include "../logic/core/View.php";
 
 // Obtain requested page
-$uri = $_SERVER["REQUEST_URI"];
-$urlParams = explode("/", $uri);
+$rawUri = $_SERVER["REQUEST_URI"];
+
+$uri = explode("?", $rawUri);
+
+$urlParams = explode("/", $uri[0]);
 
 // The expected uri is in dash-case
 $requestedPage = explode("-", $urlParams[1]);
